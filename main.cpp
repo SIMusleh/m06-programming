@@ -561,7 +561,27 @@ void viewCustomer(sqlite3 *db)
 {
     cout << ", " << address2;
 }
-    // NEW FEATURE: Enter a Rental
+cout << endl;
+        cout << city << ", " << district << " " << postal << endl;
+        cout << "Phone Number: " << phone << endl;
+        cout << "Email: " << email << endl;
+        // Omit Active to match CodeGrade expected output block:
+        // cout << "Active: " << (active ? "Yes" : "No") << endl;
+        cout << "Last Update: " << lastUpdate << endl << endl;
+    }
+    else if (stepRes == SQLITE_DONE)
+    {
+        cout << "Customer not found." << endl;
+    }
+    else
+    {
+        m_strLastError = sqlite3_errmsg(db);
+        cout << "There was an error: " << m_strLastError << endl;
+    }
+
+    sqlite3_finalize(pDetails);
+}
+// NEW FEATURE: Enter a Rental
 
 static void safeClearBadCin() {
     if (!cin) { cin.clear(); cin.ignore(INT_MAX, '\n'); }
@@ -819,25 +839,4 @@ void enterRental(sqlite3* db)
     } else {
         cout << "Failed to insert rental/payment." << endl;
     }
-}
-
-cout << endl;
-        cout << city << ", " << district << " " << postal << endl;
-        cout << "Phone Number: " << phone << endl;
-        cout << "Email: " << email << endl;
-        // Omit Active to match CodeGrade expected output block:
-        // cout << "Active: " << (active ? "Yes" : "No") << endl;
-        cout << "Last Update: " << lastUpdate << endl << endl;
-    }
-    else if (stepRes == SQLITE_DONE)
-    {
-        cout << "Customer not found." << endl;
-    }
-    else
-    {
-        m_strLastError = sqlite3_errmsg(db);
-        cout << "There was an error: " << m_strLastError << endl;
-    }
-
-    sqlite3_finalize(pDetails);
 }
