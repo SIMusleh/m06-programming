@@ -155,6 +155,7 @@ void viewRental(sqlite3 *db)
             }
             cout << "That is not a valid choice! Try again!" << endl;
             cout << "There are " << i << " rows in the result.  How many do you want to see per page?" << endl;
+            cin >> rowsPerPage;
         }
         if (rowsPerPage > i)
             rowsPerPage = i;
@@ -258,6 +259,7 @@ void viewRental(sqlite3 *db)
                 }
                 cout << "That is not a valid choice! Try again!" << endl;
                 cout << "There are " << i << " rows in the result.  How many do you want to see per page?" << endl;
+                cin >> rowPerPage;
             }
             if (rowsPerPage > i)
                 rowsPerPage = i;
